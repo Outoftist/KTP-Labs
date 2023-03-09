@@ -1,6 +1,2 @@
-<<<<<<< HEAD
-Addd
-=======
+
 I am here right now
-dfd
->>>>>>> newbranch
