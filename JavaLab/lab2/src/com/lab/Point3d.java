@@ -27,6 +27,6 @@ public class Point3d extends Point2d {
     public double distanceTo(Point3d p) {
         double value = Math.sqrt(Math.pow((getZ() - p.getZ()),2) +
                 Math.pow((getX() - p.getX()),2) + Math.pow((getY() - p.getY()),2));
-        return (double)Math.round(value * 100d) / 100d;
+        return value;
     }
 }

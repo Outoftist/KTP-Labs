@@ -1,6 +1,5 @@
 package com.lab;
 
-//import  java.lang.Math;
 public class Prime {
     public static void main(String[] arg){
         System.out.println("Prime numbers:");

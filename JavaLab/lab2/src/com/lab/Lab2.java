@@ -27,6 +27,7 @@ public class Lab2 {
             p = (a + b + c) / 2;
             value = Math.sqrt(p * (p - a) * (p - b) * (p - c));
             return (double) Math.round(value * 100d) / 100d;
+
     }
     public static void main(String[] args) {
         Point3d first = new Point3d();
