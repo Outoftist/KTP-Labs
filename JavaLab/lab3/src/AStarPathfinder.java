@@ -82,6 +82,11 @@ public class AStarPathfinder
                 // If "next location" is outside the map, skip it.
                 if (!map.contains(nextLoc))
                     continue;
+                if ((y == loc.yCoord -1 && x == loc.xCoord - 1) || (y == loc.yCoord + 1 && x == loc.xCoord - 1)
+                	    || (y == loc.yCoord - 1 && x == loc.xCoord + 1)
+                	        || (y == loc.yCoord + 1 && x == loc.xCoord +1)) {
+                                continue;
+                }
 
                 // If "next location" is this location, skip it.
                 if (nextLoc == loc)

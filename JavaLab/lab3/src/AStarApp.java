@@ -54,16 +54,33 @@ public class AStarApp {
         /** Initiates the modification operation. **/
         public void mousePressed(MouseEvent e)
         {
-            modifying = true;
+            if (e.getButton() == 1) {
+                modifying = true;
 
-            JMapCell cell = (JMapCell) e.getSource();
+                JMapCell cell = (JMapCell) e.getSource();
 
-            // If the current cell is passable then we are making them
-            // impassable; if it's impassable then we are making them passable.
+                // If the current cell is passable then we are making them
+                // impassable; if it's impassable then we are making them passable.
 
-            makePassable = !cell.isPassable();
+                makePassable = false;
 
-            cell.setPassable(makePassable);
+                cell.setPassable(false);
+            }
+            if (e.getButton() == 3) {
+                modifying = true;
+
+                JMapCell cell = (JMapCell) e.getSource();
+
+                // If the current cell is passable then we are making them
+                // impassable; if it's impassable then we are making them passable.
+
+                makePassable = true;
+
+                cell.setPassable(true);
+            }
+
+
+
         }
 
         /** Ends the modification operation. **/
@@ -177,8 +194,32 @@ public class AStarApp {
 
         mapCells[startLoc.xCoord][startLoc.yCoord].setEndpoint(true);
         mapCells[finishLoc.xCoord][finishLoc.yCoord].setEndpoint(true);
+
+
+
+        JButton resetButton = new JButton("Reset");
+        resetButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) { resetMap(); }
+        });
+
+        contentPane.add(resetButton, BorderLayout.NORTH);
+
+        frame.pack();
+        frame.setVisible(true);
+
+        mapCells[startLoc.xCoord][startLoc.yCoord].setEndpoint(true);
+        mapCells[finishLoc.xCoord][finishLoc.yCoord].setEndpoint(true);
     }
 
+    void resetMap(){
+        for (int i = 0; i < mapCells.length; i++){
+            for( int j = 0; j < mapCells[i].length; j++){
+                mapCells[i][j].setPassable(true);
+                mapCells[i][j].setPath(false);
+
+            }
+        }
+    }
 
     /** Kicks off the application.  Called from the {@link #main} method. **/
     private void start()
